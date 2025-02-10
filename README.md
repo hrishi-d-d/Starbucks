@@ -1,5 +1,5 @@
-![Starbucks Clone Deployment](https://github.com/hrishi-d-d/Starbucks/blob/main/Starbucks%20Project.png)
-# Deploy Starbucks Application Clone using DevSecOps
+![Starbucks Clone Deployment](https://github.com/hrishi-d-d/Starbucks/blob/main/starbucks%20(1).png)
+# Deploy Starbucks Application Clone using DevSecOps approach.
 
 
 ## Overview
