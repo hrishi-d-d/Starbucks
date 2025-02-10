@@ -1,0 +1,616 @@
+Started by user Hrishikesh Darbastwar
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/starbucks
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clean Workspace)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Git Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/hrishi-d-d/Starbucks.git
+ > git init /var/lib/jenkins/workspace/starbucks # timeout=10
+Fetching upstream changes from https://github.com/hrishi-d-d/Starbucks.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/hrishi-d-d/Starbucks.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/hrishi-d-d/Starbucks.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 44585cd7c4a0d4a2de45a652f3d9ed51a2217e0c (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 44585cd7c4a0d4a2de45a652f3d9ed51a2217e0c # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 44585cd7c4a0d4a2de45a652f3d9ed51a2217e0c # timeout=10
+Commit message: "Update README.md"
+ > git rev-list --no-walk 44585cd7c4a0d4a2de45a652f3d9ed51a2217e0c # timeout=10
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonar-server
+[Pipeline] {
+[Pipeline] sh
++ /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/bin/sonar-scanner -Dsonar.projectName=starbucks -Dsonar.projectKey=starbucks
+08:51:18.395 INFO  Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+08:51:18.411 INFO  Project root configuration file: NONE
+08:51:18.519 INFO  SonarScanner CLI 6.1.0.4477
+08:51:18.527 INFO  Java 17.0.8.1 Eclipse Adoptium (64-bit)
+08:51:18.531 INFO  Linux 6.8.0-52-generic amd64
+08:51:18.702 INFO  User cache: /var/lib/jenkins/.sonar/cache
+08:51:22.645 INFO  Communicating with SonarQube Server 9.9.8.100196
+08:51:25.587 INFO  Load global settings
+08:51:26.039 INFO  Load global settings (done) | time=459ms
+08:51:26.053 INFO  Server id: 147B411E-AZTVwBB1bWBTjuyifguW
+08:51:26.078 INFO  User cache: /var/lib/jenkins/.sonar/cache
+08:51:26.095 INFO  Load/download plugins
+08:51:26.095 INFO  Load plugins index
+08:51:26.339 INFO  Load plugins index (done) | time=244ms
+08:51:26.753 INFO  Load/download plugins (done) | time=658ms
+08:51:29.890 INFO  Process project properties
+08:51:29.896 INFO  Process project properties (done) | time=5ms
+08:51:29.912 INFO  Execute project builders
+08:51:29.923 INFO  Execute project builders (done) | time=11ms
+08:51:29.937 INFO  Project key: starbucks
+08:51:29.939 INFO  Base dir: /var/lib/jenkins/workspace/starbucks
+08:51:29.939 INFO  Working dir: /var/lib/jenkins/workspace/starbucks/.scannerwork
+08:51:30.012 INFO  Load project settings for component key: 'starbucks'
+08:51:30.141 INFO  Load project settings for component key: 'starbucks' (done) | time=129ms
+08:51:31.044 INFO  Auto-configuring with CI 'Jenkins'
+08:51:31.086 INFO  Load quality profiles
+08:51:31.402 INFO  Load quality profiles (done) | time=315ms
+08:51:31.446 INFO  Load active rules
+08:51:39.537 INFO  Load active rules (done) | time=8091ms
+08:51:39.584 INFO  Load analysis cache
+08:51:39.706 INFO  Load analysis cache | time=122ms
+08:51:40.064 INFO  Load project repositories
+08:51:40.158 INFO  Load project repositories (done) | time=94ms
+08:51:40.545 INFO  Indexing files...
+08:51:40.548 INFO  Project configuration:
+08:51:42.413 INFO  141 files indexed
+08:51:42.415 INFO  0 files ignored because of scm ignore settings
+08:51:42.421 INFO  Quality profile for css: Sonar way
+08:51:42.422 INFO  Quality profile for js: Sonar way
+08:51:42.422 INFO  Quality profile for json: Sonar way
+08:51:42.422 INFO  Quality profile for web: Sonar way
+08:51:42.422 INFO  ------------- Run sensors on module starbucks
+08:51:43.043 INFO  Load metrics repository
+08:51:43.308 INFO  Load metrics repository (done) | time=262ms
+08:51:51.759 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+08:51:51.763 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+08:51:51.768 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+08:51:51.769 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=11ms
+08:51:51.771 INFO  Sensor IaC CloudFormation Sensor [iac]
+08:51:53.413 INFO  0 source files to be analyzed
+08:51:53.685 INFO  0/0 source files have been analyzed
+08:51:53.686 INFO  Sensor IaC CloudFormation Sensor [iac] (done) | time=1915ms
+08:51:53.687 INFO  Sensor IaC Kubernetes Sensor [iac]
+08:51:54.202 INFO  0 source files to be analyzed
+08:51:54.443 INFO  0/0 source files have been analyzed
+08:51:54.444 INFO  Sensor IaC Kubernetes Sensor [iac] (done) | time=758ms
+08:51:54.444 INFO  Sensor JavaScript analysis [javascript]
+08:52:12.314 INFO  17 source files to be analyzed
+08:52:21.512 INFO  17/17 source files have been analyzed
+08:52:21.513 INFO  Hit the cache for 0 out of 17
+08:52:21.542 INFO  Miss the cache for 17 out of 17: ANALYSIS_MODE_INELIGIBLE [17/17]
+08:52:21.545 INFO  Sensor JavaScript analysis [javascript] (done) | time=27101ms
+08:52:21.545 INFO  Sensor TypeScript analysis [javascript]
+08:52:21.547 INFO  No input files found for analysis
+08:52:21.549 INFO  Hit the cache for 0 out of 0
+08:52:21.550 INFO  Miss the cache for 0 out of 0
+08:52:21.554 INFO  Sensor TypeScript analysis [javascript] (done) | time=9ms
+08:52:21.554 INFO  Sensor CSS Rules [javascript]
+08:52:21.578 INFO  5 source files to be analyzed
+08:52:22.892 INFO  5/5 source files have been analyzed
+08:52:22.894 INFO  Hit the cache for 0 out of 0
+08:52:22.894 INFO  Miss the cache for 0 out of 0
+08:52:22.894 INFO  Sensor CSS Rules [javascript] (done) | time=1340ms
+08:52:22.895 INFO  Sensor CSS Metrics [javascript]
+08:52:23.041 INFO  Sensor CSS Metrics [javascript] (done) | time=147ms
+08:52:23.041 INFO  Sensor C# Project Type Information [csharp]
+08:52:23.045 INFO  Sensor C# Project Type Information [csharp] (done) | time=4ms
+08:52:23.046 INFO  Sensor C# Analysis Log [csharp]
+08:52:23.145 INFO  Sensor C# Analysis Log [csharp] (done) | time=99ms
+08:52:23.146 INFO  Sensor C# Properties [csharp]
+08:52:23.146 INFO  Sensor C# Properties [csharp] (done) | time=0ms
+08:52:23.146 INFO  Sensor HTML [web]
+08:52:23.658 INFO  Sensor HTML [web] (done) | time=512ms
+08:52:23.659 INFO  Sensor TextAndSecretsSensor [text]
+08:52:23.726 INFO  25 source files to be analyzed
+08:52:25.676 INFO  25/25 source files have been analyzed
+08:52:25.677 INFO  Sensor TextAndSecretsSensor [text] (done) | time=2018ms
+08:52:25.678 INFO  Sensor VB.NET Project Type Information [vbnet]
+08:52:25.682 INFO  Sensor VB.NET Project Type Information [vbnet] (done) | time=4ms
+08:52:25.683 INFO  Sensor VB.NET Analysis Log [vbnet]
+08:52:25.791 INFO  Sensor VB.NET Analysis Log [vbnet] (done) | time=108ms
+08:52:25.791 INFO  Sensor VB.NET Properties [vbnet]
+08:52:25.792 INFO  Sensor VB.NET Properties [vbnet] (done) | time=1ms
+08:52:25.792 INFO  Sensor IaC Docker Sensor [iac]
+08:52:25.814 INFO  1 source file to be analyzed
+08:52:26.196 INFO  1/1 source file has been analyzed
+08:52:26.197 INFO  Sensor IaC Docker Sensor [iac] (done) | time=405ms
+08:52:26.221 INFO  ------------- Run sensors on project
+08:52:26.543 INFO  Sensor Analysis Warnings import [csharp]
+08:52:26.547 INFO  Sensor Analysis Warnings import [csharp] (done) | time=4ms
+08:52:26.548 INFO  Sensor Zero Coverage Sensor
+08:52:26.613 INFO  Sensor Zero Coverage Sensor (done) | time=65ms
+08:52:26.703 INFO  CPD Executor 10 files had no CPD blocks
+08:52:26.704 INFO  CPD Executor Calculating CPD for 9 files
+08:52:26.781 INFO  CPD Executor CPD calculation finished (done) | time=75ms
+08:52:27.106 INFO  Analysis report generated in 300ms, dir size=266.3 kB
+08:52:27.318 INFO  Analysis report compressed in 208ms, zip size=95.5 kB
+08:52:27.459 INFO  Analysis report uploaded in 139ms
+08:52:27.465 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://192.168.80.139:9000/dashboard?id=starbucks
+08:52:27.465 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+08:52:27.465 INFO  More about the report processing at http://192.168.80.139:9000/api/ce/task?id=AZTt4Ta94Y3kX-a_hVyv
+08:52:35.336 INFO  Analysis total time: 1:08.016 s
+08:52:35.362 INFO  EXECUTION SUCCESS
+08:52:35.365 INFO  Total time: 1:17.154s
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate Check)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] waitForQualityGate
+Checking status of SonarQube task 'AZTt4Ta94Y3kX-a_hVyv' on server 'sonar-server'
+SonarQube task 'AZTt4Ta94Y3kX-a_hVyv' status is 'IN_PROGRESS'
+SonarQube task 'AZTt4Ta94Y3kX-a_hVyv' status is 'SUCCESS'
+SonarQube task 'AZTt4Ta94Y3kX-a_hVyv' completed. Quality gate is 'OK'
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install NPM Dependencies)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ npm install
+npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+npm WARN deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+npm WARN deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+npm WARN deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+npm WARN deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+
+added 1482 packages, and audited 1483 packages in 1m
+
+235 packages are looking for funding
+  run `npm fund` for details
+
+30 vulnerabilities (3 low, 10 moderate, 16 high, 1 critical)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Trivy Security Scan)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ trivy fs .
+2025-02-10T08:54:04+05:30	INFO	[vuln] Vulnerability scanning is enabled
+2025-02-10T08:54:04+05:30	INFO	[secret] Secret scanning is enabled
+2025-02-10T08:54:04+05:30	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2025-02-10T08:54:04+05:30	INFO	[secret] Please see also https://aquasecurity.github.io/trivy/v0.59/docs/scanner/secret#recommendation for faster secret detection
+2025-02-10T08:54:09+05:30	INFO	Number of language-specific files	num=1
+2025-02-10T08:54:09+05:30	INFO	[npm] Detecting vulnerabilities...
+[Pipeline] sh
++ cat trivy.txt
+
+For OSS Maintainers: VEX Notice
+--------------------------------
+If you're an OSS maintainer and Trivy has detected vulnerabilities in your project that you believe are not actually exploitable, consider issuing a VEX (Vulnerability Exploitability eXchange) statement.
+VEX allows you to communicate the actual status of vulnerabilities in your project, improving security transparency and reducing false positives for your users.
+Learn more and start using VEX: https://aquasecurity.github.io/trivy/v0.59/docs/supply-chain/vex/repo#publishing-vex-documents
+
+To disable this notice, set the TRIVY_DISABLE_VEX_NOTICE environment variable.
+
+
+package-lock.json (npm)
+=======================
+Total: 31 (UNKNOWN: 0, LOW: 4, MEDIUM: 13, HIGH: 13, CRITICAL: 1)
+
+┌────────────────────────┬────────────────┬──────────┬────────┬───────────────────┬────────────────────────────────────┬──────────────────────────────────────────────────────────────┐
+│        Library         │ Vulnerability  │ Severity │ Status │ Installed Version │           Fixed Version            │                            Title                             │
+├────────────────────────┼────────────────┼──────────┼────────┼───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ @adobe/css-tools       │ CVE-2023-26364 │ MEDIUM   │ fixed  │ 4.2.0             │ 4.3.1                              │ css-tools: Improper Input Validation causes Denial of        │
+│                        │                │          │        │                   │                                    │ Service via Regular Expression                               │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-26364                   │
+│                        ├────────────────┤          │        │                   ├────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2023-48631 │          │        │                   │ 4.3.2                              │ css-tools: regular expression denial of service (ReDoS) when │
+│                        │                │          │        │                   │                                    │ parsing CSS                                                  │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-48631                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ @babel/traverse        │ CVE-2023-45133 │ CRITICAL │        │ 7.21.5            │ 7.23.2, 8.0.0-alpha.4              │ babel: arbitrary code execution                              │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-45133                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ body-parser            │ CVE-2024-45590 │ HIGH     │        │ 1.20.1            │ 1.20.3                             │ body-parser: Denial of Service Vulnerability in body-parser  │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-45590                   │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ braces                 │ CVE-2024-4068  │          │        │ 3.0.2             │ 3.0.3                              │ braces: fails to limit the number of characters it can       │
+│                        │                │          │        │                   │                                    │ handle                                                       │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-4068                    │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cookie                 │ CVE-2024-47764 │ LOW      │        │ 0.5.0             │ 0.7.0                              │ cookie: cookie accepts cookie name, path, and domain with    │
+│                        │                │          │        │                   │                                    │ out of bounds...                                             │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-47764                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ cross-spawn            │ CVE-2024-21538 │ HIGH     │        │ 7.0.3             │ 7.0.5, 6.0.6                       │ cross-spawn: regular expression denial of service            │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-21538                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ejs                    │ CVE-2024-33883 │ MEDIUM   │        │ 3.1.9             │ 3.1.10                             │ The ejs (aka Embedded JavaScript templates) package before   │
+│                        │                │          │        │                   │                                    │ 3.1.10 for ......                                            │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-33883                   │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ express                │ CVE-2024-29041 │          │        │ 4.18.2            │ 4.19.2, 5.0.0-beta.3               │ express: cause malformed URLs to be evaluated                │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-29041                   │
+│                        ├────────────────┼──────────┤        │                   ├────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-43796 │ LOW      │        │                   │ 4.20.0, 5.0.0                      │ express: Improper Input Handling in Express Redirects        │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-43796                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ follow-redirects       │ CVE-2023-26159 │ MEDIUM   │        │ 1.15.2            │ 1.15.4                             │ follow-redirects: Improper Input Validation due to the       │
+│                        │                │          │        │                   │                                    │ improper handling of URLs by...                              │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-26159                   │
+│                        ├────────────────┤          │        │                   ├────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-28849 │          │        │                   │ 1.15.6                             │ follow-redirects: Possible credential leak                   │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-28849                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ http-proxy-middleware  │ CVE-2024-21536 │ HIGH     │        │ 2.0.6             │ 2.0.7, 3.0.3                       │ http-proxy-middleware: Denial of Service                     │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-21536                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ micromatch             │ CVE-2024-4067  │ MEDIUM   │        │ 4.0.5             │ 4.0.8                              │ micromatch: vulnerable to Regular Expression Denial of       │
+│                        │                │          │        │                   │                                    │ Service                                                      │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-4067                    │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ nanoid                 │ CVE-2024-55565 │          │        │ 3.3.6             │ 5.0.9, 3.3.8                       │ nanoid: nanoid mishandles non-integer values                 │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-55565                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ nth-check              │ CVE-2021-3803  │ HIGH     │        │ 1.0.2             │ 2.0.1                              │ nodejs-nth-check: inefficient regular expression complexity  │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2021-3803                    │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ path-to-regexp         │ CVE-2024-45296 │          │        │ 0.1.7             │ 1.9.0, 0.1.10, 8.0.0, 3.3.0, 6.3.0 │ path-to-regexp: Backtracking regular expressions cause ReDoS │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-45296                   │
+│                        ├────────────────┤          │        │                   ├────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│                        │ CVE-2024-52798 │          │        │                   │ 0.1.12                             │ path-to-regexp: path-to-regexp Unpatched `path-to-regexp`    │
+│                        │                │          │        │                   │                                    │ ReDoS in 0.1.x                                               │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-52798                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ postcss                │ CVE-2023-44270 │ MEDIUM   │        │ 7.0.39            │ 8.4.31                             │ PostCSS: Improper input validation in PostCSS                │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-44270                   │
+│                        │                │          │        ├───────────────────┤                                    │                                                              │
+│                        │                │          │        │ 8.4.23            │                                    │                                                              │
+│                        │                │          │        │                   │                                    │                                                              │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ rollup                 │ CVE-2024-47068 │ HIGH     │        │ 2.79.1            │ 3.29.5, 4.22.4, 2.79.2             │ rollup: DOM Clobbering Gadget found in rollup bundled        │
+│                        │                │          │        │                   │                                    │ scripts that leads to...                                     │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-47068                   │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ semver                 │ CVE-2022-25883 │          │        │ 6.3.0             │ 7.5.2, 6.3.1, 5.7.2                │ nodejs-semver: Regular expression denial of service          │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2022-25883                   │
+│                        │                │          │        ├───────────────────┤                                    │                                                              │
+│                        │                │          │        │ 7.5.1             │                                    │                                                              │
+│                        │                │          │        │                   │                                    │                                                              │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ send                   │ CVE-2024-43799 │ LOW      │        │ 0.18.0            │ 0.19.0                             │ send: Code Execution Vulnerability in Send Library           │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-43799                   │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ serve-static           │ CVE-2024-43800 │          │        │ 1.15.0            │ 1.16.0, 2.1.0                      │ serve-static: Improper Sanitization in serve-static          │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-43800                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ tough-cookie           │ CVE-2023-26136 │ MEDIUM   │        │ 4.1.2             │ 4.1.3                              │ tough-cookie: prototype pollution in cookie memstore         │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-26136                   │
+├────────────────────────┼────────────────┤          │        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ webpack                │ CVE-2024-43788 │          │        │ 5.83.1            │ 5.94.0                             │ webpack: DOM Clobbering vulnerability in                     │
+│                        │                │          │        │                   │                                    │ AutoPublicPathRuntimeModule                                  │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-43788                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ webpack-dev-middleware │ CVE-2024-29180 │ HIGH     │        │ 5.3.3             │ 7.1.0, 6.1.2, 5.3.4                │ webpack-dev-middleware: lack of URL validation may lead to   │
+│                        │                │          │        │                   │                                    │ file leak                                                    │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-29180                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ word-wrap              │ CVE-2023-26115 │ MEDIUM   │        │ 1.2.3             │ 1.2.4                              │ word-wrap: ReDoS                                             │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2023-26115                   │
+├────────────────────────┼────────────────┼──────────┤        ├───────────────────┼────────────────────────────────────┼──────────────────────────────────────────────────────────────┤
+│ ws                     │ CVE-2024-37890 │ HIGH     │        │ 7.5.9             │ 5.2.4, 6.2.3, 7.5.10, 8.17.1       │ nodejs-ws: denial of service when handling a request with    │
+│                        │                │          │        │                   │                                    │ many HTTP headers...                                         │
+│                        │                │          │        │                   │                                    │ https://avd.aquasec.com/nvd/cve-2024-37890                   │
+│                        │                │          │        ├───────────────────┤                                    │                                                              │
+│                        │                │          │        │ 8.13.0            │                                    │                                                              │
+│                        │                │          │        │                   │                                    │                                                              │
+│                        │                │          │        │                   │                                    │                                                              │
+└────────────────────────┴────────────────┴──────────┴────────┴───────────────────┴────────────────────────────────────┴──────────────────────────────────────────────────────────────┘
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker build -t starbucks:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 561B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:alpine
+#2 DONE 3.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/5] FROM docker.io/library/node:alpine@sha256:70eca392e3d52cb7d133b52d52e8600d8c410a5eaee6105c11324b28868f9ac9
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 52.11MB 5.0s
+#5 transferring context: 66.95MB 10.2s
+#5 transferring context: 88.19MB 15.3s
+#5 transferring context: 109.34MB 20.3s
+#5 transferring context: 140.27MB 25.3s
+#5 transferring context: 238.78MB 30.4s
+#5 transferring context: 317.32MB 34.8s done
+#5 DONE 35.0s
+
+#6 [2/5] WORKDIR /app
+#6 CACHED
+
+#7 [3/5] COPY package.json package-lock.json /app/
+#7 CACHED
+
+#8 [4/5] RUN npm install
+#8 CACHED
+
+#9 [5/5] COPY . /app/
+#9 DONE 28.2s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 14.9s done
+#10 writing image sha256:717ab7896b00665042a00aeef1c4eba3a95b200df981ccf4faa21ce88d46428c done
+#10 naming to docker.io/library/starbucks:latest 0.0s done
+#10 DONE 15.0s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push to DockerHub)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withDockerRegistry
+$ docker login -u hd.darbastwar0706@gmail.com -p ******** https://index.docker.io/v1/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/workspace/starbucks@tmp/0923291f-c884-4f49-a087-0aa02575454e/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker tag starbucks:latest hrishi0706/starbucks:latest
+[Pipeline] sh
++ docker push hrishi0706/starbucks:latest
+The push refers to repository [docker.io/hrishi0706/starbucks]
+1bb901811099: Preparing
+ba31ccd1a536: Preparing
+184df3edb943: Preparing
+4eecfbb62a27: Preparing
+994da487eb62: Preparing
+70fd3345070c: Preparing
+50e325d7cd64: Preparing
+a0904247e36a: Preparing
+50e325d7cd64: Waiting
+a0904247e36a: Waiting
+70fd3345070c: Waiting
+4eecfbb62a27: Layer already exists
+994da487eb62: Layer already exists
+ba31ccd1a536: Layer already exists
+184df3edb943: Layer already exists
+50e325d7cd64: Layer already exists
+70fd3345070c: Layer already exists
+a0904247e36a: Layer already exists
+1bb901811099: Pushed
+latest: digest: sha256:fb7f31a6401b4b3fc1d6851cacdacc866527c3e9cb7f78b8f35576ab2f5b1434 size: 1999
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy to Docker Swarm)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker swarm init
+Swarm initialized: current node (mrhdcmdfs7efnzujqrnq1e8yn) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-62mgxxlpaex7d2khz3ttnc2tkjuanvbwq5o8t5yr0il5l4ocll-0ugsp45z8sf3g4xglw33blbi0 192.168.80.139:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
++ docker service rm starbucks
+Error response from daemon: service starbucks not found
++ true
++ docker service create --name starbucks --replicas 5 --publish 3000:3000 --restart-condition any hrishi0706/starbucks:latest
+rb57l35hn9fqolsrrvppgvqyj
+overall progress: 0 out of 5 tasks
+1/5:  
+2/5:  
+3/5:  
+4/5:  
+5/5:  
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 0 out of 5 tasks
+overall progress: 5 out of 5 tasks
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Service rb57l35hn9fqolsrrvppgvqyj converged
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] emailext
+Sending email to: hd.darbastwar0706@gmail.com
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
