@@ -58,6 +58,7 @@ Starbucks/
 4. **Builds a Docker image** and pushes it to DockerHub.
 5. **Deploys a Docker Swarm service** with **5 replicas**.
 6. **Ensures containers restart automatically** if they fail.
+7. **Sends an email** about the **succes/failure  of the jenkins job pipeline** along with **build.log and trivy scan report file.**
 
 ## SonarQube Source code analysis report :
 ![SonarQube Source code analysis report](https://github.com/hrishi-d-d/Starbucks/blob/main/Screenshot%20(444).png)
